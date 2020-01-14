@@ -21,12 +21,9 @@ def handle_post():
     global TICKETS
 
     if request.method == "POST":
-        try:
-            data = request.get_json()
-            TICKETS.append(ticket_info(data['triggerAuthor'],
-                                       data['card']['title']))
-        except: # noqa
-            pass
+        data = request.get_json()
+        TICKETS.append(ticket_info(data['kanbanize_payload']['triggerAuthor'],
+                                   data['kanbanize_payload']['card']['title']))
 
     elif request.method == "GET" and len(TICKETS) > 0:
         ticket = TICKETS.pop(0)
