@@ -40,7 +40,8 @@ def create_and_play_mp3(user, title):
 
     p = subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "final.mp3"])
     p.communicate()
-    os.remove('final.txt')
+    os.remove('text.mp3')
+    os.remove('final.mp3')
 
 
 if __name__ == "__main__":
