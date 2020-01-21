@@ -52,4 +52,4 @@ if __name__ == "__main__":
         except: # noqa
             pass
 
-        time.sleep(10)
+        time.sleep(20)
