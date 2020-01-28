@@ -22,8 +22,8 @@ compliments = ['Good job',
                'Lets hear it for',
                'Too crude to be true',
                'Awesome work',
-               'bravo',
-               'hip hip hooray']
+               'Bravo',
+               'Hip hip hooray']
 
 
 def create_and_play_mp3(user, title):
