@@ -7,12 +7,6 @@ import subprocess
 import sys
 import time
 
-announcements = ['Ladies and gentlemen',
-                 'Can I have your attention please',
-                 'Everybody listen up',
-                 'NICE',
-                 'Yipee']
-
 compliments = ['Good job',
                'Amazing job',
                'Well done',
@@ -28,7 +22,6 @@ compliments = ['Good job',
 
 def create_and_play_mp3(user, title):
     mytext = '{}. The card with title: {}: is completed. {}, {}!'.format(
-            random.choice(announcements),
             title,
             random.choice(compliments),
             user)
