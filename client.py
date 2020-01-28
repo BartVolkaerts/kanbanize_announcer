@@ -17,14 +17,15 @@ compliments = ['Good job',
                'Too crude to be true',
                'Awesome work',
                'Bravo',
-               'Hip hip hooray']
+               'Hip hip hooray for']
 
 
 def create_and_play_mp3(user, title):
-    mytext = '{}. The card with title: {}: is completed. {}, {}!'.format(
-            title,
-            random.choice(compliments),
-            user)
+    random.seed()
+    mytext = 'The card with title: {} is completed. {} {}!'.format(
+             title,
+             random.choice(compliments),
+             user)
     language = 'en'
 
     myobj = gTTS(text=mytext, lang=language, slow=False)
@@ -32,7 +33,8 @@ def create_and_play_mp3(user, title):
 
     bing_sound = AudioSegment.from_mp3("bing.mp3")
     speech = AudioSegment.from_mp3("text.mp3")
-    total = bing_sound + speech + bing_sound
+    applauding = AudioSegment.from_mp3("applaud.mp3")
+    total = bing_sound + speech + applauding
     total.export('final.mp3', format="mp3")
 
     p = subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "final.mp3"])
