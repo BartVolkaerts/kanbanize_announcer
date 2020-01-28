@@ -20,7 +20,7 @@ compliments = ['Good job',
                'Congrats',
                'All hail',
                'Lets hear it for',
-               'Too crude to be true,
+               'Too crude to be true',
                'Awesome work',
                'bravo',
                'hip hip hooray']
