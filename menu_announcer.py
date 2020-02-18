@@ -14,17 +14,19 @@ d = page.read()
 
 announcements = ['De menu van vandaag',
                  'Vandaag op het menu',
-                 'Jammie, vandaag is het']
+                 'Jammie, vandaag is het',
+                 'Vandaag wordt het smullen met',
+                 'Vandaag maakt Ivona jullie blij met']
 
 
 def parse_menu(menu):
     print(menu)
     menu = menu.split('\n')
+    random.seed()
     return "{}. {}. {}. Suggestie: {}.".format(random.choice(announcements),
                                                menu[1],
                                                menu[3],
                                                menu[5])
-
 
 def speak_menu(menu):
     language = 'nl'
@@ -36,14 +38,6 @@ def speak_menu(menu):
 
 
 soup = BeautifulSoup(d, "html.parser")
-found_day = False
-for tr in soup.findAll("table"):
-    for td in tr.find_all("td"):
-        if found_day is False:
-            if dayname in td.text:
-                found_day = True
-        else:
-            speak_menu(parse_menu(td.text))
-            break
-    if found_day:
-        break
+table = soup.findAll("table")[1].find_all("td")
+menu = table[3+(2*datetime.datetime.today().weekday())].text
+speak_menu(parse_menu(menu))
